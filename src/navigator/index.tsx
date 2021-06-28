@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import {NavigationContainer} from '@react-navigation/native';
-import Home from '../screen/home/Home';
 import Category from '../screen/category/Category';
 import Comment from '../screen/comment/Comment';
 import Conllection from '../screen/conllection/Conllection';
@@ -10,12 +9,15 @@ import Recharge from '../screen/recharge/Recharge';
 import Me from '../screen/me/Me';
 import Bill from '../screen/bill/Bill';
 import Cart from '../screen/cart/Cart';
+import ButtonTab from './ButtonTab';
+import Home from '../screen/home/Home';
 import {
     createStackNavigator,
     StackNavigationProp,
 } from '@react-navigation/stack';
 
 export type RootStackParamList = {
+    ButtonTab: undefined;
     Home: undefined;
     Bill: undefined;
     Cart: undefined;
@@ -29,6 +31,7 @@ export type RootStackParamList = {
 };
 
 export type RootStackNavigation = StackNavigationProp<RootStackParamList>;
+
 const Stack = createStackNavigator<RootStackParamList>();
 
 export default class Navigator extends Component {
@@ -36,6 +39,7 @@ export default class Navigator extends Component {
         return (
             <NavigationContainer>
                 <Stack.Navigator>
+                    <Stack.Screen name="ButtonTab" component={ButtonTab} />
                     <Stack.Screen
                         name="Home"
                         component={Home}

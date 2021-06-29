@@ -38,7 +38,14 @@ export default class Navigator extends Component {
     render() {
         return (
             <NavigationContainer>
-                <Stack.Navigator>
+                <Stack.Navigator
+                    screenOptions={{
+                        headerTintColor: '#6070fc',
+                        headerTitleStyle: {
+                            fontSize: 26,
+                            fontWeight: '600',
+                        },
+                    }}>
                     <Stack.Screen name="ButtonTab" component={ButtonTab} />
                     <Stack.Screen
                         name="Home"

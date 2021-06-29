@@ -52,3 +52,57 @@ src
 └─ App.tsx                
 
 ```
+
+## 已完成事件
+
+- 图标
+
+## Todo
+
+- 自定义全局字体（搞明白默认字体及大小）
+- 跟随系统字体（限制跟随系统）
+- statusBar
+
+### react-native-vector-icons
+
+- 安装
+
+```shell
+$ yarn add react-native-vector-icons
+```
+
+- 进入ios文件夹中安装依赖
+
+```shell
+# 进入ios文件夹
+$ cd ios
+
+# 安装依赖
+$ pod install
+```
+
+- 在Info.plist中添加字体
+  
+> 注意：这儿的Info.plist是`ios/build`同级目录的项目名称下的文件
+
+```xml
+<key>UIAppFonts</key>
+<array>
+    <string>AntDesign.ttf</string>
+    <string>Entypo.ttf</string>
+    <string>EvilIcons.ttf</string>
+    <string>Feather.ttf</string>
+    <string>FontAwesome.ttf</string>
+    <string>FontAwesome5_Brands.ttf</string>
+    <string>FontAwesome5_Regular.ttf</string>
+    <string>FontAwesome5_Solid.ttf</string>
+    <string>Fontisto.ttf</string>
+    <string>Foundation.ttf</string>
+    <string>Ionicons.ttf</string>
+    <string>MaterialCommunityIcons.ttf</string>
+    <string>MaterialIcons.ttf</string>
+    <string>Octicons.ttf</string>
+    <string>SimpleLineIcons.ttf</string>
+    <string>Zocial.ttf</string>
+</array>
+```

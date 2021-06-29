@@ -10,6 +10,7 @@ import {
     getFocusedRouteNameFromRoute,
     RouteProp,
 } from '@react-navigation/native';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 export type ButtonTabParamList = {
     Home: undefined;
@@ -30,7 +31,7 @@ const Tab = createBottomTabNavigator<RootStackParamList>();
 export default class ButtonTab extends Component<IProps> {
     handleSetHeaderTitle() {
         const {navigation, route} = this.props;
-        const routeName = getFocusedRouteNameFromRoute(route) || 'Home';
+        const routeName = getFocusedRouteNameFromRoute(route) ?? 'Home';
 
         navigation.setOptions({
             headerTitle: () => {
@@ -43,8 +44,6 @@ export default class ButtonTab extends Component<IProps> {
                         return <Text>cart</Text>;
                     case 'Me':
                         return <Text>me</Text>;
-                    default:
-                        return <Text>home</Text>;
                 }
             },
         });
@@ -58,7 +57,43 @@ export default class ButtonTab extends Component<IProps> {
     }
     render() {
         return (
-            <Tab.Navigator>
+            <Tab.Navigator
+                tabBarOptions={{
+                    activeTintColor: '#6070fc', // 修改tabbar激活颜色
+                    labelStyle: {
+                        fontSize: 12,
+                        fontWeight: '300',
+                    },
+                }}
+                screenOptions={({route}) => ({
+                    tabBarIcon: ({focused, size}) => {
+                        let iconName = '';
+                        switch (route.name) {
+                            case 'Home':
+                                iconName = 'home';
+                                break;
+                            case 'Category':
+                                iconName = 'list';
+                                break;
+                            case 'Cart':
+                                iconName = 'shopping-cart';
+                                break;
+                            case 'Me':
+                                iconName = 'user-o';
+                                break;
+
+                            default:
+                                break;
+                        }
+                        return (
+                            <Icon
+                                name={iconName}
+                                color={focused ? '#6070fc' : '#ccc'}
+                                size={size}
+                            />
+                        );
+                    },
+                })}>
                 <Tab.Screen name="Home" component={Home} />
                 <Tab.Screen name="Category" component={Category} />
                 <Tab.Screen name="Cart" component={Cart} />

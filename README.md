@@ -71,6 +71,8 @@ src
 $ yarn add react-native-vector-icons
 ```
 
+#### IOS 端
+
 - 进入ios文件夹中安装依赖
 
 ```shell
@@ -106,3 +108,18 @@ $ pod install
     <string>Zocial.ttf</string>
 </array>
 ```
+
+#### Android 端
+
+- 在 `android/build.gradle` 文件内配置如下内容
+  
+```shell
+project.ext.vectoricons = [
+    iconFontNames: [ 'MaterialIcons.ttf', 'EvilIcons.ttf' ] // Name of the font files you want to copy
+]
+
+apply from: "../../node_modules/react-native-vector-icons/fonts.gradle"
+```
+  
+- 添加字体
+> 将`node_modules/react-native-vector-icons/Fonts`内的文件复制到 `android/app/src/main/assets/fonts`中；注意文件名大小写
